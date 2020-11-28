@@ -1,19 +1,26 @@
 from package.Core import Core
-
+from package.Dir import Dir
 
 class FNFManager(Core):
     def __init__(self):
         super().__init__()
         print(self.read_dir())
 
-    def read_dir(self, dir_name=""):
-        # if there will be no directory then root directory data will be returned
-        f_data = []
-        data = self.get_db_data()
-        directory = data["directories"]
+    def create_file(self):
+        pass
 
-        if directory:
-            if not dir_name:
-                return directory["0"]
+    def delete_file(self):
+        pass
 
-        return f_data
+    def open_file(self):
+        pass
+
+    def close_file(self):
+        pass
+
+    def show_map(self):
+        pass
+
+    def read_dir(self, dirname):
+        directory = Dir(dirname)
+        return directory.read()

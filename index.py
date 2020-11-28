@@ -2,7 +2,8 @@ from package.Finager import Finager
 
 
 def main():
-    Finager()
+    fin = Finager()
+    fin.print_menu()
 
 
 if __name__ == '__main__':
