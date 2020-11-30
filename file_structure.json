@@ -1,0 +1,27 @@
+{
+    "meta_data": {
+        "storage": 51,
+        "files": 0
+    },
+    "files": {
+        "0": {
+            "name": "a.txt",
+            "size": 0,
+            "chunks": {}
+        },
+        "1": {
+            "name": "b.txt",
+            "size": 51,
+            "chunks": {
+                "0": "Hi there Im very eci",
+                "1": "ted to see gujjar's ",
+                "2": "big muscles"
+            }
+        },
+        "2": {
+            "name": "c.txt",
+            "size": 0,
+            "chunks": {}
+        }
+    }
+}
