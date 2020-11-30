@@ -3,49 +3,63 @@ from files import File
 import os.path
 import sys
 
-chunk_id = 0
-file_id = 0
 makeChanges = 0
+
+
+def file_id_assigner():
+    if not list(JSON_structure["files"].keys()):
+        file_id = 0
+    else:
+        file_id = int(list(JSON_structure["files"].keys())[-1])
+        file_id += 1
+    return file_id
+
+
+def chunk_id_assigner(fileIndexes):
+    if not list(JSON_structure["files"][fileIndexes]["chunks"].keys()):
+        chunk_id = 0
+    else:
+        chunk_id = int(list(JSON_structure["files"][fileIndexes]["chunks"].keys())[-1])
+        chunk_id += 1
+    return chunk_id
+
 
 def load_JSON():
     global JSON_structure
     if os.path.isfile('file_structure.json'):
         with open('file_structure.json') as JSON_Infile:
             JSON_structure = json.load(JSON_Infile)
-            print(json.dumps(JSON_structure, indent=4))
     else:
         print("File not exist")
 
 
 def create_file():
-    global file_id
     file_name = input("Enter File name: ")
-    file = File(file_id, file_name, 0, {})
+    file = File(file_id_assigner(), file_name, 0, {})
     JSON_structure["files"].update(file.create_f())
     print("File Created Successfully!")
-    print(json.dumps(JSON_structure, indent=4))
-    file_id += 1
 
 
 def delete_file():
     file_name = input("Enter File name: ")
     FnF = False
-    for fileIndexes in JSON_structure["files"].keys():
+    for fileIndexes in list(JSON_structure["files"]):
         if JSON_structure["files"][fileIndexes]["name"] != file_name:
             FnF = True
         else:
             FnF = False
             JSON_structure["meta_data"]["storage"] -= JSON_structure["files"][fileIndexes]["size"]
             del JSON_structure["files"][fileIndexes]
+            break
     if FnF:
         print("File not found")
-    print("File Deleted Successfully!")
+    if not FnF:
+        print("File Deleted Successfully!")
 
 
 def open_for_write(file_name):
     global makeChanges
     makeChanges = 1
-    global chunk_id
     chunkSize = 20
     FnF = False
     for fileIndexes in JSON_structure["files"].keys():
@@ -57,8 +71,7 @@ def open_for_write(file_name):
             JSON_structure["files"][fileIndexes]["size"] += len(Text)
             JSON_structure["meta_data"]["storage"] += JSON_structure["files"][fileIndexes]["size"]
             for i in range(0, len(Text), chunkSize):
-                JSON_structure["files"][fileIndexes]["chunks"].update({str(chunk_id): Text[i:i + chunkSize]})
-                chunk_id += 1
+                JSON_structure["files"][fileIndexes]["chunks"].update({str(chunk_id_assigner(fileIndexes)): Text[i:i + chunkSize]})
             break
     if FnF:
         print("File not found")
@@ -75,12 +88,12 @@ def open_for_read(file_name):
         else:
             FnF = False
             for data in JSON_structure["files"][fileIndexes]["chunks"].keys():
-                fullData += JSON_structure["files"][fileIndexes]["chunks"][data] + " "
+                fullData += JSON_structure["files"][fileIndexes]["chunks"][data] + ""
             break
     if FnF:
         print("File not found")
     if not FnF:
-        print(fullData)
+        print(fullData) if not fullData else print("File is Empty!\n")
 
 
 def open_file():
@@ -98,12 +111,13 @@ def open_file():
 
 
 def show_map():
-    pass
+    print(json.dumps(JSON_structure, indent=4))
 
 
 def dump_JSON():
     with open('file_structure.json', "w") as JSON_Outfile:
         json.dump(JSON_structure, JSON_Outfile, indent=4)
+        print("Changes Saved!")
 
 
 def close_program():
