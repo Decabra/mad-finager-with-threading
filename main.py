@@ -34,13 +34,16 @@ def load_JSON():
 
 
 def create_file():
+    global makeChanges
     file_name = input("Enter File name: ")
     file = File(file_id_assigner(), file_name, 0, {})
     JSON_structure["files"].update(file.create_f())
     print("File Created Successfully!")
+    makeChanges = 1
 
 
 def delete_file():
+    global makeChanges
     file_name = input("Enter File name: ")
     FnF = False
     for fileIndexes in list(JSON_structure["files"]):
@@ -55,6 +58,7 @@ def delete_file():
         print("File not found")
     if not FnF:
         print("File Deleted Successfully!")
+    makeChanges = 1
 
 
 def open_for_write(file_name):
@@ -93,7 +97,7 @@ def open_for_read(file_name):
     if FnF:
         print("File not found")
     if not FnF:
-        print(fullData) if not fullData else print("File is Empty!\n")
+        print(fullData)
 
 
 def open_file():
