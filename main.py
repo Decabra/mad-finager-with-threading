@@ -35,11 +35,20 @@ def load_JSON():
 
 def create_file():
     global makeChanges
+    flag = False
     file_name = input("Enter File name: ")
-    file = File(file_id_assigner(), file_name, 0, {})
-    JSON_structure["files"].update(file.create_f())
-    print("File Created Successfully!")
-    makeChanges = 1
+    for fileIndexes in list(JSON_structure["files"]):
+        if JSON_structure["files"][fileIndexes]["name"] == file_name:
+            flag = True
+            break
+    if flag:
+        print("File with the same name already Exists!")
+    else:
+        file = File(file_id_assigner(), file_name, 0, {})
+        JSON_structure["files"].update(file.create_f())
+        JSON_structure["meta_data"]["files"] += 1
+        print("File Created Successfully!")
+        makeChanges = 1
 
 
 def delete_file():
@@ -58,7 +67,8 @@ def delete_file():
         print("File not found")
     if not FnF:
         print("File Deleted Successfully!")
-    makeChanges = 1
+        JSON_structure["meta_data"]["files"] -= 1
+        makeChanges = 1
 
 
 def open_for_write(file_name):
@@ -97,12 +107,13 @@ def open_for_read(file_name):
     if FnF:
         print("File not found")
     if not FnF:
-        print(fullData)
+        message = fullData if fullData else "File is empty!"
+        print(message)
 
 
 def open_file():
+    file_name = input("Enter file name: ")
     while True:
-        file_name = input("Enter file name: ")
         openOptions = "\n1. Open for Read\n2. Open for Write\n3. Close File"
         print(openOptions)
         openChoice = input("Enter value: ")

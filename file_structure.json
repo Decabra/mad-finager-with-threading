@@ -1,7 +1,7 @@
 {
     "meta_data": {
-        "storage": 170,
-        "files": 0
+        "storage": 119,
+        "files": 5
     },
     "files": {
         "1": {
@@ -29,6 +29,11 @@
         },
         "4": {
             "name": "w.txt",
+            "size": 0,
+            "chunks": {}
+        },
+        "5": {
+            "name": "r.txt",
             "size": 0,
             "chunks": {}
         }
