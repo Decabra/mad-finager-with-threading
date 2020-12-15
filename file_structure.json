@@ -1,6 +1,6 @@
 {
     "meta_data": {
-        "storage": 119,
+        "storage": 172,
         "files": 5
     },
     "files": {
@@ -17,11 +17,6 @@
                 "6": "ver seen"
             }
         },
-        "2": {
-            "name": "c.txt",
-            "size": 0,
-            "chunks": {}
-        },
         "3": {
             "name": "q.txt",
             "size": 0,
@@ -36,6 +31,15 @@
             "name": "r.txt",
             "size": 0,
             "chunks": {}
+        },
+        "6": {
+            "name": "ad.txt",
+            "size": 53,
+            "chunks": {
+                "0": "hohouinhuobiubhuohuo",
+                "1": "huhojhihubouhbuohohu",
+                "2": "jhiobhpoiohbo"
+            }
         }
     }
 }
