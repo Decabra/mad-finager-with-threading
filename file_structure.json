@@ -1,6 +1,6 @@
 {
     "meta_data": {
-        "storage": 811,
+        "storage": 284,
         "files": 5
     },
     "files": {
@@ -34,7 +34,7 @@
         },
         "6": {
             "name": "ad.txt",
-            "size": 124,
+            "size": 165,
             "chunks": {
                 "0": "hohouinhuobiubhuohuo",
                 "1": "huhojhihubouhbuohohu",
@@ -45,7 +45,12 @@
                 "6": "nnnn",
                 "7": "jjjjj",
                 "8": "ppppppp",
-                "9": "ttttttttt"
+                "9": "ttttttttt",
+                "10": "mmmmmmmm",
+                "11": "adaswdwda",
+                "12": "1",
+                "13": "fasdasdsad",
+                "14": "hibiybuibuihn"
             }
         }
     }

@@ -1,0 +1,6 @@
+create c.txt
+delete ad.txt
+open_for_read b.txt
+open_for_write c.txt
+show_map
+close
