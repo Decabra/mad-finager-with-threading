@@ -169,23 +169,24 @@ def close_program():
         pass
 
 
-def cmd_execute(cmd_file, thread_id):
+def cmd_execute(cmd_file, thread_id):           
     if os.path.isfile(cmd_file):
-        with open(cmd_file, "r") as commands:
+        with open(cmd_file, "r") as commands:       
+                                                #cmd.txt file will be  opened
             cmd_list = commands.read().split("\n")
-        for i in range(0, len(cmd_list), 1):
+        for i in range(0, len(cmd_list), 1):    
             cmd_kw = cmd_list[i].split(" ")
-            if cmd_kw[0] == "create":
+            if cmd_kw[0] == "create":       #If the command is 'create', then it will create a file 
                 create_file(cmd_kw[1])
-            elif cmd_kw[0] == "delete":
+            elif cmd_kw[0] == "delete":     #If the command is 'delete', then it will delete a file
                 delete_file(cmd_kw[1])
-            elif cmd_kw[0] == "open_for_read":
+            elif cmd_kw[0] == "open_for_read":     #If the command is 'open_for_read', then it will open a file for reading
                 open_for_read(cmd_kw[1])
-            elif cmd_kw[0] == "open_for_write":
+            elif cmd_kw[0] == "open_for_write":     #If the command is 'open_for_write', then it will open a file for appending the data with already existing data
                 open_for_write(cmd_kw[1])
-            elif cmd_kw[0] == "show_map":
+            elif cmd_kw[0] == "show_map":     #If the command is 'show_map', then it will show a JSON file that shows all the content with id, size, chunks and data.
                 show_map()
-            elif cmd_kw[0] == "close":
+            elif cmd_kw[0] == "close":      #If the command is 'close', then it will close the already opened file
                 close_program()
             else:
                 print("Invalid input")
@@ -200,18 +201,18 @@ while True:
     if startProgram == 0:
         load_JSON()
     cmd_file = input("Enter Commands File: ")
-    k = int(input("Enter no. of threads: "))
+    k = int(input("Enter no. of threads: ")) #k-number of threads
     thread_array = []
-    for i in range(k):
+    for i in range(k):      
         # Create new threads
-        running_thread = Threads(cmd_file, i + 1)
+        running_thread = Threads(cmd_file, i + 1) 
         # Start new Threads
-        running_thread.start()
+        running_thread.start()      #running k number of threads
         # Add threads to thread list
         thread_array.append(running_thread)
 
     # Wait for all threads to complete
-    for t in thread_array:
+    for t in thread_array:      #Lock implementation
         t.join()
     print("Exiting main thread...")
     startProgram = 1
