@@ -12,10 +12,10 @@ It represent its output and store its files in Javascript Object Notation(JSON) 
 ##### Introduction: 
 First of all, we created JSON file structure to implement this file management system. We will do this using python as a programming language. We have attached two files i.e first is file.py and second is main.py 
 
-##### Implementation in files.py:
+##### 1.Implementation in files.py:
 In this file we have created the main skeleton of JSON file that how data is represented in JSON file. The elements in files.py are id, names, size and chunks. The function create_f()   create the new file in JSON when this function calls from main.py.
 	
-##### Implementation in main.py:
+##### 2.Implementation in main.py:
 We import the JSON file structure. Then the implementation of the following function are as follows:
 
 ##### file_id_assigner(): It gives the id to each file when it is created and update in file_structure.json
@@ -29,6 +29,17 @@ We import the JSON file structure. Then the implementation of the following func
 ##### dump_JSON(): This will update the data in JSON file as open_for_write function is implemented.
 ##### close_file(): This will close the already open file
 
-##### Implementation in file_structure.json:
+##### 3.Implementation in file_structure.json:
 
 In this file, it displays all of the contents that are created with their size, chunks, file id, it’s name, extension of the file name, data written onto the file. We use the chunks of 20 bytes to display data. If data exceeds up 20 bytes, it will create new chunk to store data. It also shows the collective sizes of data in meta_data. In this example, we have created 4 files namely  b.txt, c.txt, q.txt, w.txt respectively. We store some of the data in b.txt. . c.txt,q.txt,w.txt are just created but no data are written onto it, so, their size is 0.
+
+##### 4.Implementation in cmd.txt:
+
+In this file, it has all the commands in the text form like
+	create c.txt
+	delete ad.txt
+	open_for_read b.txt
+	open_for_write c.txt
+	show_map
+	close
+So, we extract the data from this file that are used in function. 
