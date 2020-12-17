@@ -18,16 +18,37 @@ In this file we have created the main skeleton of JSON file that how data is rep
 ##### 2.Implementation in main.py:
 We import the JSON file structure. Then the implementation of the following function are as follows:
 
-##### file_id_assigner(): It gives the id to each file when it is created and update in file_structure.json
-##### chunk_id_assigner(): It gives the chunk to each file when it is created and update in file_structure.json
-##### create_file(): This will create file in JSON structure, we use the flat (not hieratical) system for our file system. After this we have an option of write open that or create new file.
-##### delete_file(): This will delete the already existing file
-##### open_for_write(): When we create a file, we have an option to open it and then write data onto it. If this file has already written data onto it, this function will append data at the last of the already existing file.
-##### open_for_read(): This function makes us to look the contents of the  file.
-##### open_file(): To open a file we use this function. After opening it, we have an option to read, write or close the file.
-##### show_map(): This function will give all the contents of JSON file. It displays all the files, their storage, chunks and what’s the data  written in that file.
-##### dump_JSON(): This will update the data in JSON file as open_for_write function is implemented.
-##### close_file(): This will close the already open file
+##### file_id_assigner(): 
+It gives the id to each file when it is created and update in file_structure.json
+##### chunk_id_assigner():
+It gives the chunk to each file when it is created and update in file_structure.json
+##### create_file(): 
+This will create file in JSON structure, we use the flat (not hieratical) system for our file system. After this we have an option of write open that or create new file.
+##### delete_file(): 
+This will delete the already existing file
+##### open_for_write(): 
+When we create a file, we have an option to open it and then write data onto it. If this file has already written data onto it, this function will append data at the last of the already existing file.
+##### open_for_read(): 
+This function makes us to look the contents of the  file.
+##### open_file(): 
+To open a file we use this function. After opening it, we have an option to read, write or close the file.
+##### show_map(): 
+This function will give all the contents of JSON file. It displays all the files, their storage, chunks and what’s the data  written in that file.
+##### dump_JSON(): 
+This will update the data in JSON file as open_for_write function is implemented.
+##### close_file(): 
+This will close the already open file
+##### cmd_execute():
+This function matches the command written by the user with the content in cmd.txt file.If the command is 'create', then it will create a file.
+If the command is 'delete', then it will delete a file.If the command is 'open_for_read', then it will open a file for reading.
+If the command is 'open_for_write', then it will open a file for appending the data with already existing data
+If the command is 'show_map', then it will show a JSON file that shows all the content with id, size, chunks and data.
+If the command is 'close', then it will close the already opened file
+
+Moving forward, it will also create the threads, start it and then add this threads into the thread array. Now in last loop, a thread is waiting until the already executing 
+thread is done with its work.
+
+
 
 ##### 3.Implementation in file_structure.json:
 
@@ -42,4 +63,4 @@ In this file, it has all the commands in the text form like
 	open_for_write c.txt
 	show_map
 	close
-So, we extract the data from this file that are used in function. 
+So, we extract the data from this file that are used in cmd_execute() function. 
