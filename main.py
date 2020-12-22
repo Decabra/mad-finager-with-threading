@@ -21,7 +21,7 @@ class Threads(threading.Thread):
     def run(self):
         # Get lock to synchronize threads
         Lock.acquire()
-        print("Starting thread " + str(self.ThreadId))
+        display_msg("Starting thread " + str(self.ThreadId))
         cmd_execute(self.FileName, self.ThreadId)
         # Free lock to release next thread
         Lock.release()
@@ -45,6 +45,11 @@ def chunk_id_assigner(file_indexes):
     return chunk_id
 
 
+def clear_logs():
+    f = open("logs.txt", "w")
+    f.close()
+
+
 def load_JSON():
     global JSON_structure
     if os.path.isfile('file_structure.json'):
@@ -62,12 +67,12 @@ def create_file(file_name):
             flag = True
             break
     if flag:
-        print("File with the same name already Exists!")
+        display_msg("File with the same name already Exists!")
     else:
         file = File(file_id_assigner(), file_name, 0, {})
         JSON_structure["files"].update(file.create_f())
         JSON_structure["meta_data"]["files"] += 1
-        print("File Created Successfully!")
+        display_msg("File Created Successfully!")
         makeChanges = 1
 
 
@@ -83,9 +88,9 @@ def delete_file(file_name):
             del JSON_structure["files"][fileIndexes]
             break
     if FnF:
-        print("File not exists")
+        display_msg("File not exists")
     if not FnF:
-        print("File Deleted Successfully!")
+        display_msg("File Deleted Successfully!")
         JSON_structure["meta_data"]["files"] -= 1
         makeChanges = 1
 
@@ -100,7 +105,7 @@ def open_for_write(file_name):
             FnF = True
         else:
             FnF = False
-            Text = input("Enter Text: ")
+            Text = input("Enter Text for file " + file_name + ": ")
             JSON_structure["files"][file_indexes]["size"] += len(Text)
             JSON_structure["meta_data"]["storage"] += JSON_structure["files"][file_indexes]["size"]
             for i in range(0, len(Text), chunkSize):
@@ -108,9 +113,9 @@ def open_for_write(file_name):
                     {str(chunk_id_assigner(file_indexes)): Text[i:i + chunkSize]})
             break
     if FnF:
-        print("File not exists")
+        display_msg("File not exists")
     if not FnF:
-        print("Data writing Successful!")
+        display_msg("Data writing Successful!")
 
 
 def open_for_read(file_name):
@@ -125,17 +130,17 @@ def open_for_read(file_name):
                 fullData += JSON_structure["files"][file_indexes]["chunks"][data] + ""
             break
     if FnF:
-        print("File not exists")
+        display_msg("File not exists")
     if not FnF:
         message = fullData if fullData else "File is empty!"
-        print(message)
+        display_msg(message)
 
 
 def open_file():
     file_name = input("Enter file name: ")
     while True:
         openOptions = "\n1. Open for Read\n2. Open for Write\n3. Close File"
-        print(openOptions)
+        display_msg(openOptions)
         openChoice = input("Enter value: ")
         if openChoice == "1":
             open_for_read(file_name)
@@ -146,13 +151,13 @@ def open_file():
 
 
 def show_map():
-    print(json.dumps(JSON_structure, indent=4))
+    display_msg(json.dumps(JSON_structure, indent=4))
 
 
 def dump_JSON():
     with open('file_structure.json', "w") as JSON_Outfile:
         json.dump(JSON_structure, JSON_Outfile, indent=4)
-        print("Changes Saved!")
+        display_msg("Changes Saved!")
 
 
 def close_program():
@@ -164,7 +169,7 @@ def close_program():
         elif haltInput == "2":
             pass
         else:
-            print("1. Invalid input")
+            display_msg("1. Invalid input")
     else:
         pass
 
@@ -187,18 +192,20 @@ def cmd_execute(cmd_file, thread_id):
                 show_map()
             elif cmd_kw[0] == "close":
                 close_program()
-            else:
-                print("Invalid input")
-        print("Finishing thread " + str(thread_id))
+        display_msg("Finishing thread " + str(thread_id))
     else:
-        print("Commands File not found")
+        display_msg("Commands File not found")
     return
 
 
-startProgram = 0
+def display_msg(msg):
+    with open("logs.txt", "a") as file_ptr:
+        print(msg, file=file_ptr)
+
+
 while True:
-    if startProgram == 0:
-        load_JSON()
+    clear_logs()
+    load_JSON()
     cmd_file = input("Enter Commands File: ")
     k = int(input("Enter no. of threads: "))
     thread_array = []
@@ -213,6 +220,5 @@ while True:
     # Wait for all threads to complete
     for t in thread_array:
         t.join()
-    print("Exiting main thread...")
-    startProgram = 1
+    print("Logs created in the logs.txt file check the root directory...")
     sys.exit()

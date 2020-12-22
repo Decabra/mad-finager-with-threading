@@ -1,6 +1,6 @@
 {
     "meta_data": {
-        "storage": 284,
+        "storage": 244,
         "files": 5
     },
     "files": {
@@ -32,25 +32,17 @@
             "size": 0,
             "chunks": {}
         },
-        "6": {
-            "name": "ad.txt",
-            "size": 165,
+        "7": {
+            "name": "c.txt",
+            "size": 40,
             "chunks": {
-                "0": "hohouinhuobiubhuohuo",
-                "1": "huhojhihubouhbuohohu",
-                "2": "jhiobhpoiohbo",
-                "3": "bjhkbhibhibibuiobiuh",
-                "4": "obubhobubbuohuoho",
-                "5": "mmmmmmmmm",
-                "6": "nnnn",
-                "7": "jjjjj",
-                "8": "ppppppp",
-                "9": "ttttttttt",
-                "10": "mmmmmmmm",
-                "11": "adaswdwda",
-                "12": "1",
-                "13": "fasdasdsad",
-                "14": "hibiybuibuihn"
+                "0": "hello",
+                "1": "we",
+                "2": "sttt",
+                "3": "hey",
+                "4": "there",
+                "5": "asdadsadfs",
+                "6": "dasdasdasda"
             }
         }
     }
