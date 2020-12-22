@@ -1,66 +1,48 @@
 # Mad-Finager-With-Threading
-### A virtual file managment system can perform following: ###
-##### 1. Create File #####
-##### 2. Delete File #####
-##### 3. Open File #####
-##### 4. Read File #####
-##### 5. Write File #####
-##### 6. Close File #####
+An implementation of a File Management System that can create chunk, writes data onto the file using a self-created command interpreter. With the usage of threading, we can make the record of each event.
+### A virtual file managment system can perform following: 
+##### 1. Create File 
+##### 2. Delete File 
+##### 3. Open File 
+##### 4. Read File 
+##### 5. Write File 
+##### 6. Close File 
 
 It represent its output and store its files in Javascript Object Notation(JSON) file in a very beautiful manner.
 
-##### Introduction: 
-First of all, we created JSON file structure to implement this file management system. We will do this using python as a programming language. We have attached two files i.e first is file.py and second is main.py 
 
-##### 1.Implementation in files.py:
-In this file we have created the main skeleton of JSON file that how data is represented in JSON file. The elements in files.py are id, names, size and chunks. The function create_f()   create the new file in JSON when this function calls from main.py.
-	
-##### 2.Implementation in main.py:
-We import the JSON file structure. Then the implementation of the following function are as follows:
+# Motivation
+Mostly we have seen many computers having the implementation of File Management System. So, creating, writing data or reading content from the file, or open a file is done by using a simple project called "MAD-Finager with threading."
 
-##### file_id_assigner(): 
-It gives the id to each file when it is created and update in file_structure.json
-##### chunk_id_assigner():
-It gives the chunk to each file when it is created and update in file_structure.json
-##### create_file(): 
-This will create file in JSON structure, we use the flat (not hieratical) system for our file system. After this we have an option of write open that or create new file.
-##### delete_file(): 
-This will delete the already existing file
-##### open_for_write(): 
-When we create a file, we have an option to open it and then write data onto it. If this file has already written data onto it, this function will append data at the last of the already existing file.
-##### open_for_read(): 
-This function makes us to look the contents of the  file.
-##### open_file(): 
-To open a file we use this function. After opening it, we have an option to read, write or close the file.
-##### show_map(): 
-This function will give all the contents of JSON file. It displays all the files, their storage, chunks and what’s the data  written in that file.
-##### dump_JSON(): 
-This will update the data in JSON file as open_for_write function is implemented.
-##### close_file(): 
-This will close the already open file
-##### cmd_execute():
-This function matches the command written by the user with the content in cmd.txt file.If the command is 'create', then it will create a file.
-If the command is 'delete', then it will delete a file.If the command is 'open_for_read', then it will open a file for reading.
-If the command is 'open_for_write', then it will open a file for appending the data with already existing data
-If the command is 'show_map', then it will show a JSON file that shows all the content with id, size, chunks and data.
-If the command is 'close', then it will close the already opened file
-
-Moving forward, it will also create the threads, start it and then add this threads into the thread array. Now in last loop, a thread is waiting until the already executing 
-thread is done with its work.
+# Build status
+Previous version of this project is implemented as "Mad-Finager"
 
 
+# Code style
+We have used Python language by using its thread library, with the usage of JSON file structure. 
 
-##### 3.Implementation in file_structure.json:
+# Screenshots
 
-In this file, it displays all of the contents that are created with their size, chunks, file id, it’s name, extension of the file name, data written onto the file. We use the chunks of 20 bytes to display data. If data exceeds up 20 bytes, it will create new chunk to store data. It also shows the collective sizes of data in meta_data. In this example, we have created 4 files namely  b.txt, c.txt, q.txt, w.txt respectively. We store some of the data in b.txt. . c.txt,q.txt,w.txt are just created but no data are written onto it, so, their size is 0.
 
-##### 4.Implementation in cmd.txt:
+# Technology Used
+Python 3.7 and JSON
 
-In this file, it has all the commands in the text form like
-	create c.txt
-	delete ad.txt
-	open_for_read b.txt
-	open_for_write c.txt
-	show_map
-	close
-So, we extract the data from this file that are used in cmd_execute() function. 
+# Built with
+
+Pycharm and Intelligaia IDE
+
+
+# How to use?
+First, we will give the name of the file in which we have written our all commands. Let's say it will be stored in cmd.txt. So, after running the code, then we will give the number of the threads by entering a numerical value.
+Then it will started the all the  thread, and only one thread is currently being used and all other other threads are locked until the execution of already executing thread. In the execution, we can perform the task of creating a file, opening of a file, reading the content from that file, writing data from the file, save channges to the file and then closing a file.
+
+### Note
+If we will enter '0' in the number of threads, it will terminate the program without executing it because no thread is in running state. 
+
+# Contribute
+You can give contribution to make it a gaint File Management System with other features of replace, manage, date modified and other general features.
+
+# License
+NUST © Sarmad Sohail
+NUST © Hamza Amjad
+NUST © Muhammad Umer Farooq
