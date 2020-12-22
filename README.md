@@ -22,6 +22,10 @@ Previous version of this project is implemented as "Mad-Finager"
 We have used Python language by using its thread library, with the usage of JSON file structure. 
 
 # Screenshots
+![image](https://user-images.githubusercontent.com/57443179/102895050-daf8a700-4485-11eb-810a-15855a114724.png)
+![image](https://user-images.githubusercontent.com/57443179/102894978-ba305180-4485-11eb-812d-b5079422e1fb.png)
+![image](https://user-images.githubusercontent.com/57443179/102895135-fa8fcf80-4485-11eb-9b2b-091e8c2466e2.png)
+![image](https://user-images.githubusercontent.com/57443179/102895203-1bf0bb80-4486-11eb-8cc6-5203f83d470d.png)
 
 
 # Technology Used
@@ -34,7 +38,7 @@ PyCharm and Intelligaia IDE
 
 # How to use?
 First, we will give the name of the file in which we have written our all commands. Let's say it will be stored in cmd.txt. So, after running the code, then we will give the number of the threads by entering a numerical value.
-Then it will started the all the  thread, and only one thread is currently being used and all other threads are locked until the execution of already executing thread. In the execution, we can perform the task of creating a file, opening of a file, reading the content from that file, writing data from the file, save channges to the file and then closing a file.
+Then it will started the all the  thread, and only one thread is currently being used and all other threads are locked until the execution of already executing thread. In the execution, we can perform the task of creating a file, opening of a file, reading the content from that file, writing data from the file, save changes to the file and then closing a file.
 
 ### Note
 If we will enter '0' in the number of threads, it will terminate the program without executing it because no thread is in running state. 
