@@ -1,0 +1,111 @@
+Starting thread 1
+File with the same name already Exists!
+File not exists
+Hi there Im very ecited to see gujjar's big musclesHey there this a crazy file managment system that ou have never seen
+Data writing Successful!
+{
+    "meta_data": {
+        "storage": 204,
+        "files": 5
+    },
+    "files": {
+        "1": {
+            "name": "b.txt",
+            "size": 119,
+            "chunks": {
+                "0": "Hi there Im very eci",
+                "1": "ted to see gujjar's ",
+                "2": "big muscles",
+                "3": "Hey there this a cra",
+                "4": "zy file managment sy",
+                "5": "stem that ou have ne",
+                "6": "ver seen"
+            }
+        },
+        "3": {
+            "name": "q.txt",
+            "size": 0,
+            "chunks": {}
+        },
+        "4": {
+            "name": "w.txt",
+            "size": 0,
+            "chunks": {}
+        },
+        "5": {
+            "name": "r.txt",
+            "size": 0,
+            "chunks": {}
+        },
+        "7": {
+            "name": "c.txt",
+            "size": 29,
+            "chunks": {
+                "0": "hello",
+                "1": "we",
+                "2": "sttt",
+                "3": "hey",
+                "4": "there",
+                "5": "asdadsadfs"
+            }
+        }
+    }
+}
+Changes Saved!
+Finishing thread 1
+Starting thread 2
+File with the same name already Exists!
+File not exists
+Hi there Im very ecited to see gujjar's big musclesHey there this a crazy file managment system that ou have never seen
+Data writing Successful!
+{
+    "meta_data": {
+        "storage": 244,
+        "files": 5
+    },
+    "files": {
+        "1": {
+            "name": "b.txt",
+            "size": 119,
+            "chunks": {
+                "0": "Hi there Im very eci",
+                "1": "ted to see gujjar's ",
+                "2": "big muscles",
+                "3": "Hey there this a cra",
+                "4": "zy file managment sy",
+                "5": "stem that ou have ne",
+                "6": "ver seen"
+            }
+        },
+        "3": {
+            "name": "q.txt",
+            "size": 0,
+            "chunks": {}
+        },
+        "4": {
+            "name": "w.txt",
+            "size": 0,
+            "chunks": {}
+        },
+        "5": {
+            "name": "r.txt",
+            "size": 0,
+            "chunks": {}
+        },
+        "7": {
+            "name": "c.txt",
+            "size": 40,
+            "chunks": {
+                "0": "hello",
+                "1": "we",
+                "2": "sttt",
+                "3": "hey",
+                "4": "there",
+                "5": "asdadsadfs",
+                "6": "dasdasdasda"
+            }
+        }
+    }
+}
+Changes Saved!
+Finishing thread 2
