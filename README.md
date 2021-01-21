@@ -29,7 +29,7 @@ We have used Python language by using its thread library, with the usage of JSON
 
 
 # Technology Used
-Python 3.7 and JSON
+Python 3.7 and   JSON
 
 # Built with
 
